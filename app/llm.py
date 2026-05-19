@@ -15,7 +15,7 @@ llm=ChatGroq(
     ),
 
     model_name=
-    "llama-3.3-70b-versatile",
+    "llama-3.1-8b-instant",
 
     temperature=0
 

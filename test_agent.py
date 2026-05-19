@@ -1,47 +1,55 @@
-from app.agent import agent
+from app.agent import get_agent
 from app.llm import llm
 
-question="how much bussinees i made in this month in kochi"
 
-response=agent.invoke(question)
+question = "show total sales in Hyderabad"
 
-sales=response["output"]
-
-print(
-"\nAgent output:"
+agent = get_agent(
+    question
 )
 
-print(sales)
+response = agent.invoke(
+    question
+)
 
-prompt=f"""
+sales = response["output"]
 
-User asked:
+print(
+    "\nAgent output:"
+)
 
+print(
+    sales
+)
+
+prompt = f"""
+You are Sangam CRM assistant.
+
+Rules:
+
+1. Currency always ₹ INR
+
+2. Never invent trends
+
+3. Never hallucinate
+
+Question:
 {question}
 
 Database result:
-
 {sales}
 
-Create short CRM business summary.
-
-Example:
-
-Mumbai sales: ₹21,627,221
-
-Sales performance looks strong.
-
-Only 2 lines.
+Generate answer in 2 lines.
 """
 
-final=llm.invoke(
-prompt
+final = llm.invoke(
+    prompt
 )
 
 print(
-"\nBot response:"
+    "\nBot response:"
 )
 
 print(
-final.content
+    final.content
 )
