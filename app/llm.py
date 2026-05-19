@@ -1,0 +1,22 @@
+import os
+
+from dotenv import load_dotenv
+from langchain_groq import ChatGroq
+# from langchain_google_genai import ChatGoogleGenerativeAI
+
+
+load_dotenv()
+
+llm=ChatGroq(
+
+    groq_api_key=
+    os.getenv(
+        "GROQ_API_KEY"
+    ),
+
+    model_name=
+    "llama-3.3-70b-versatile",
+
+    temperature=0
+
+)
